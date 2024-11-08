@@ -1,0 +1,36 @@
+#services {
+  padding: 40px;
+  background-color: #f8f9fa;
+  text-align: center;
+}
+
+#services h2 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+#services div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+#services div > div {
+  width: 200px;
+  margin: 15px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#services h3 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#services p {
+  font-size: 14px;
+  color: #666;
+}

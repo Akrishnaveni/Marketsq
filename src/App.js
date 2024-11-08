@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Header from "./components/Header";
+import Home from "./components/Home";
+import Discover from "./components/Discover";
+import Services from "./components/Services";
+import OrderForm from "./components/OrderForm";
+import OrderComplete from "./components/OrderComplete";
+import "./App.css";
 
-function App() {
+const App = () => {
+  const [showForm, setShowForm] = useState(false);
+  const [orderComplete, setOrderComplete] = useState(false);
+  const [orderDetails, setOrderDetails] = useState({});
+
+  const handleBookClick = () => setShowForm(true);
+
+  const handleFormSubmit = (data) => {
+    setOrderDetails(data);
+    setOrderComplete(true);
+    setShowForm(false);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      {!showForm && !orderComplete && (
+        <>
+          <Home onBook={handleBookClick} />
+          <Discover />
+          <Services />
+        </>
+      )}
+      {showForm && <OrderForm onSubmit={handleFormSubmit} />}
+      {orderComplete && <OrderComplete details={orderDetails} />}
     </div>
   );
-}
+};
 
 export default App;
